@@ -12,8 +12,8 @@ if ! command -v shellcheck >/dev/null 2>&1; then
   exit 1
 fi
 
-# Find all shell scripts in bin directory and run shellcheck on them
-find bin -name "*.sh" -type f | while read -r script; do
+# Find all shell scripts in bin and .githooks directories and run shellcheck on them
+find bin .githooks -name "*.sh" -o -path ".githooks/*" -type f | while read -r script; do
   echo "Checking $script..."
   if ! shellcheck "$script"; then
     echo "Error: shellcheck failed for $script"
