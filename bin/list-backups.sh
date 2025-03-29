@@ -1,4 +1,4 @@
 #!/bin/sh
 echo "=== Listing backups"
-ls -l /backups/$FILENAME
+ls -l /backups/
 echo "=== Done."
