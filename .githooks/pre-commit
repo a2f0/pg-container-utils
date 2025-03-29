@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Pre-commit hook that runs the same checks as pre-push
+# This just calls the pre-push script to avoid duplication
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(dirname "$0")"
+
+# Execute the pre-push hook
+exec "$SCRIPT_DIR/pre-push" 
