@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 echo "=== Backup Postgres database: $POSTGRES_DB"
 
