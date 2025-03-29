@@ -1,4 +1,4 @@
-FROM postgres:11
+FROM postgres:17
 
 RUN apt-get update && apt-get --assume-yes install python-pip curl && \
     pip install awscli --upgrade && \
