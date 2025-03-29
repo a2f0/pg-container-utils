@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Pre-push hook to run shellcheck against shell scripts in bin directory
+
+echo "Running shellcheck on shell scripts in bin directory..."
+
+# Check if shellcheck is installed
+if ! command -v shellcheck >/dev/null 2>&1; then
+  echo "Error: shellcheck is not installed. Please install it first."
+  echo "  macOS: brew install shellcheck"
+  echo "  Linux: apt-get install shellcheck or equivalent"
+  exit 1
+fi
+
+# Find all shell scripts in bin directory and run shellcheck on them
+find bin -name "*.sh" -type f | while read -r script; do
+  echo "Checking $script..."
+  if ! shellcheck "$script"; then
+    echo "Error: shellcheck failed for $script"
+    exit 1
+  fi
+done
+
+exit_code=$?
+
+if [ $exit_code -eq 0 ]; then
+  echo "All shell scripts passed shellcheck validation."
+else
+  echo "Fix shellcheck errors before pushing."
+  exit 1
+fi
+
+exit 0 
