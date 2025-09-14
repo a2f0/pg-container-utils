@@ -7,7 +7,7 @@ echo "=== Performing restore to $POSTGRES_DB"
 export PGPASSWORD="$POSTGRES_PASSWORD"
 
 echo "=== Dropping $POSTGRES_DB"
-dropdb "$POSTGRES_DB" -h "$POSTGRES_HOST" -U "$POSTGRES_USER"
+dropdb "$POSTGRES_DB" -h "$POSTGRES_HOST" -U "$POSTGRES_USER" || true
 
 echo "=== Creating $POSTGRES_DB"
 createdb "$POSTGRES_DB" -h "$POSTGRES_HOST" -U "$POSTGRES_USER"
